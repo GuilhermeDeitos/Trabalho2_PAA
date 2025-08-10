@@ -205,7 +205,7 @@ int main()
         cerr << "Erro ao abrir o arquivo: metricas_johnson.csv" << endl;
         return 1;
     }
-    output_file << "Algoritmo," << "Tempo (s)," << "Uso de Memória (MB)," << "Precisão (%)," << "Número de Comparações," << "Linguagem," << "Vertices" << "\n";
+    output_file << "Algoritmo," << "Tempo (s)," << "Uso de Memória (MB)," << "Precisão (%)," << "Número de Comparações," << "Linguagem," << "Vertices," << "Execução" << "\n";
     output_file.close();
 
     for (exec = 1; exec <= 6; exec++)
@@ -214,7 +214,7 @@ int main()
         for (int num_vertices_file : vertices_counts)
         {
             string filename = "Entrada" + to_string(num_vertices_file) + ".txt";
-            string filepath = "../../GrafosPonderados_NaoDirecionados/" + filename;
+            string filepath = "../GrafosPonderados_NaoDirecionados/" + filename;
 
             ifstream file(filepath);
             if (!file.is_open())
@@ -263,7 +263,7 @@ int main()
                     return 1;
                 }
 
-                output_file << "Johnson," << fixed << setprecision(8) << duration.count() << ",0,100," << comparisons << "," << num_vertices << "\n";
+                output_file << "Johnson," << fixed << setprecision(8) << duration.count() << ",0,100," << comparisons << "," << num_vertices << "," << exec << "\n";
                 output_file.close();
             }
         }
