@@ -9,7 +9,7 @@
 
 using namespace std;
 
-pair<vector<double>, int> bellman_ford_johnson(const vector<vector<double>> &graph, int start, int &num_comparacoes)
+pair<vector<double>, unsigned long long int> bellman_ford_johnson(const vector<vector<double>> &graph, int start, unsigned long long int &num_comparacoes)
 {
     int num_vertices = graph.size();
     vector<double> dist(num_vertices, numeric_limits<double>::infinity());
@@ -33,7 +33,7 @@ pair<vector<double>, int> bellman_ford_johnson(const vector<vector<double>> &gra
     return make_pair(dist, num_comparacoes);
 }
 
-vector<double> dijkstra(const vector<vector<double>> &graph, int start, int &num_comparacoes)
+vector<double> dijkstra(const vector<vector<double>> &graph, int start, unsigned long long int &num_comparacoes)
 {
     int num_vertices = graph.size();
     vector<double> dist(num_vertices, numeric_limits<double>::infinity());
@@ -79,7 +79,7 @@ vector<double> dijkstra(const vector<vector<double>> &graph, int start, int &num
 pair<vector<vector<double>>, int> johnson(vector<vector<double>> graph)
 {
     int num_vertices = graph.size();
-    int num_comparacoes = 0;
+    unsigned long long int num_comparacoes = 0;
 
     // Verifica se todos os pesos são não-negativos
     bool all_non_negative = true;
@@ -248,7 +248,7 @@ int main()
             cout << "Tempo de execução: " << fixed << setprecision(8) << duration.count() << " segundos" << endl;
 
             vector<vector<double>> distances = result.first;
-            int comparisons = result.second;
+            unsigned long long int comparisons = result.second;
 
             cout << "Número de comparações: " << comparisons << endl
                  << endl;

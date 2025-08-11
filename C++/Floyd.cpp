@@ -13,7 +13,7 @@ pair<vector<vector<double>>, int> floyd_warshall(const vector<vector<double>> &g
     // Número de vértices no grafo
     int num_vertices = graph.size();
 
-    int num_comparacoes = 0;
+    unsigned long long int num_comparacoes = 0;
 
     // Inicializa a matriz de distâncias com os pesos das arestas
     vector<vector<double>> dist(num_vertices, vector<double>(num_vertices, numeric_limits<double>::infinity()));
@@ -76,7 +76,7 @@ void print_matrix(const vector<vector<double>> &matrix)
 int main()
 {
     int exec = 1;
-    vector<int> vertex_counts = {10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 650, 800, 1000, 1500};
+    vector<int> vertex_counts = { 10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 650, 800, 1000, 1500};
 
     ofstream output_file("metricas_floyd.csv", ios::app);
     if (!output_file.is_open())
@@ -84,7 +84,7 @@ int main()
         cerr << "Erro ao abrir o arquivo: metricas_floyd.csv" << endl;
         return 1;
     }
-    output_file << "Algoritmo," << "Tempo (s)," << "Uso de Memória (MB)," << "Precisão (%)," << "Número de Comparações," << "Linguagem," << "Vertices," << "Execução" << "\n";
+    output_file << "Algoritmo," << "Tempo (s)," << "Uso de Memória (MB)," << "Precisão (%)," << "Número de Comparações," << "Vertices," << "Execução" << "\n";
     output_file.close();
 
     for (exec = 1; exec <= 6; exec++)
@@ -124,7 +124,7 @@ int main()
             cout << "Arquivo: " << filename << " - Tempo de execução: " << fixed << setprecision(8) << duration.count() << " segundos" << endl;
 
             vector<vector<double>> distances = result.first;
-            int comparisons = result.second;
+            unsigned long long int comparisons = result.second;
 
             cout << "Número de comparações: " << comparisons << endl;
 
